@@ -36,7 +36,7 @@
       var game = this;
       assets.forEach(function(arr) {
         var key = arr[0];
-        var url = '/assets/' + arr[1];
+        var url = 'assets/' + arr[1];
         game.load.image(key, url);
       });
     },
