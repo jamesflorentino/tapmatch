@@ -4,7 +4,6 @@
 
   Game.prototype = {
     create: function () {
-
       this.level = 0;
       this.columns = 1;
       this.rows = 1;
@@ -32,6 +31,10 @@
       this.btnRetry.anchor.set(0.5);
       this.btnRetry.inputEnabled = true;
       this.btnRetry.events.onInputDown.add(this.restartGame, this);
+      this.scoreText = this.add.text(this.game.width * 0.5, 20,
+        '0', {font: '24px Arial', fill: '#ffffff', align: 'center'
+      });
+      this.scoreText.anchor.set(0.5);
       this.initLevel();
     },
 
@@ -159,6 +162,7 @@
             //s.inputEnabled = false;
           });
           this.selected = [];
+          this.increaseScore();
           this.increaseLife();
           this.checkResult();
         } else {
@@ -172,6 +176,12 @@
         });
         this.selected = [card];
       }
+    },
+
+    increaseScore: function() {
+      this.score = this.score || 0;
+      this.score++;
+      this.scoreText.setText(this.score);
     },
 
     reduceLife: function() {

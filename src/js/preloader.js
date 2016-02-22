@@ -30,7 +30,9 @@
         ['level-complete', 'level-complete.png'],
         ['btn-retry', 'btn-retry.png'],
         ['life-pane', 'life-pane.png'],
-        ['life-bg', 'life-bg.png']
+        ['life-bg', 'life-bg.png'],
+        ['menu-logo', 'menu-logo.png'],
+        ['btn-start', 'btn-start.png'],
       ];
 
       var game = this;
@@ -46,7 +48,7 @@
 
     update: function () {
       if (!!this.ready) {
-        this.game.state.start('game');
+        this.game.state.start('menu');
       }
     },
 
