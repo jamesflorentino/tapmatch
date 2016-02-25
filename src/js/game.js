@@ -148,18 +148,20 @@
       //if (this) {
       //  return this.initLevel();
       //}
+      if (this.isGameOver) {
+        return;
+      }
       var game = this;
       card.showFront();
-      if (this.selected.indexOf(card) === -1) {
-        this.selected.push(card);
+      if (this.selected.indexOf(card) > -1) {
+        return;
       }
+      this.selected.push(card);
       if (this.selected.length === 2) {
         if (this.selected[0].color === this.selected[1].color) {
           this.selected.forEach(function(s) {
             s.kill();
             game.completed.push(s);
-            //s.alpha = 0.5;
-            //s.inputEnabled = false;
           });
           this.selected = [];
           this.increaseScore();
@@ -227,10 +229,13 @@
       this.level = 0;
       this.rows = 1;
       this.columns = 1;
+      this.isGameOver = false;
+      this.increaseLife();
       this.initLevel();
     },
 
     showGameOver: function() {
+      this.isGameOver = true;
       var gameover = this.gameover;
       var btnRetry = this.btnRetry;
       gameover.x = btnRetry.x = this.world.width * 0.5;
