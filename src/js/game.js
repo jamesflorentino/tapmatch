@@ -228,6 +228,7 @@
       this.life = this.maxLife;
       this.level = 0;
       this.rows = 1;
+      this.score = 0;
       this.columns = 1;
       this.isGameOver = false;
       this.increaseLife();
